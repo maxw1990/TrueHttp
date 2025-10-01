@@ -1,4 +1,5 @@
-
+#ifndef JSON_PARSER_H
+#define JSON_PARSER_H
 #pragma once
 
 #include <cstdint>
@@ -557,6 +558,7 @@ namespace {
             default  : if( ( value <= '9' && value >= '0' ) || value == '-' )
                            return std::move( parse_number( str, offset ) );
         }
+        printf("Unknown starting %i \n", value);
         std::cerr << "ERROR: Parse: Unknown starting character '" << value << "'\n";
         return JSON();
     }
@@ -568,3 +570,4 @@ JSON JSON::Parse( const string &str ) {
 }
 
 } // End Namespace json
+#endif
